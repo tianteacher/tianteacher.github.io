@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="甜甜" />
+  <meta name="keywords" content="Injury,Fight,Shocking," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog_甜甜">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2016/10/16/Test/index.html">
 <meta property="og:site_name" content="Blog_甜甜">
-<meta property="og:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:updated_time" content="2016-10-18T01:11:57.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog_甜甜">
-<meta name="twitter:description" content="天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
 
 
 
@@ -113,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/16/Test/"/>
 
 
-  <title> Blog_甜甜 </title>
+  <title> Hello World | Blog_甜甜 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -137,9 +141,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -269,9 +271,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -291,547 +293,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/18/Gradle 配置Gretty 实现热部署/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T10:05:01+08:00" content="2016-10-18">
-              2016-10-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Gradle/" itemprop="url" rel="index">
-                    <span itemprop="name">Gradle</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/18/Gradle 配置Gretty 实现热部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/Gradle 配置Gretty 实现热部署/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>    build.gradle
-    `
-    apply plugin: &apos;java&apos;
-    apply plugin: &apos;war&apos;
-    apply plugin: &apos;idea&apos;
-
-
-    compileJava {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    version = &apos;1.0&apos;
-    buildscript {
-        repositories {
-            mavenCentral()
-            jcenter()
-        }
-        dependencies {
-            //gertty jar包
-            classpath &quot;org.akhikhl.gretty:gretty:1.2.4&quot;
-        }
-
-    }
-    //指定编码
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-        [compileJava, compileTestJava, javadoc]*.options*.encoding = &quot;UTF-8&quot;
-        dependencies {
-            // testCompile group: &apos;junit&apos;, name: &apos;junit&apos;, version: &apos;4.11&apos;
-            compile &apos;commons-logging:commons-logging:1.2&apos;
-            compile &apos;jstl:jstl:1.2&apos;
-            //compile &apos;log4j:log4j:1.2.17&apos;
-            //log
-            //compile &apos;org.slf4j:slf4j-log4j12:1.7.12&apos;
-            compile &quot;ch.qos.logback:logback-classic:1.1.3&quot;
-            compile &quot;org.slf4j:jcl-over-slf4j:1.7.12&quot;
-            //compile &quot;org.slf4j:log4j-over-slf4j:1.7.12&quot;
-            //compile &apos;log4j:log4j:1.2.17&apos;
-            //防止日志文件冲突报错
-            configurations.all {
-                resolutionStrategy.eachDependency { DependencyResolveDetails details -&gt;
-                    if (details.requested.name == &apos;log4j&apos;) {
-                        details.useTarget &apos;log4j:log4j:1.2.+&apos;
-                    }
-                }
-            }
-    //    if (details.requested.name == &apos;commons-logging&apos;) {
-    //        details.useTarget &quot;org.slf4j:jcl-over-slf4j:1.7.5&quot;
-    //    }
-            //compile &apos;log4j:log4j:1.2.17&apos;
-            //c3p0数据源
-            compile &apos;c3p0:c3p0:0.9.1.2&apos;
-            //mysql驱动
-            compile &apos;mysql:mysql-connector-java:5.1.18&apos;
-            // the database libraries.  postgresql
-    //    compile &quot;com.alibaba:druid:1.0.14&quot;
-    //    compile &quot;org.postgresql:postgresql:9.4-1201-jdbc41&quot;
-    //    compile &apos;org.postgis:postgis-jdbc:1.3.3&apos;
-    //freemarker jar
-    compile &apos;org.freemarker:freemarker:2.3.23&apos;
-    //spring jar
-    compile &apos;org.springframework:spring-beans:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-context:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-core:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-expression:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-jdbc:4.2.1.RELEASE&apos;//应该是springjdbc数据源
-    compile &apos;org.springframework:spring-tx:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-web:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-webmvc:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-webmvc-portlet:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework:spring-context-support:4.2.1.RELEASE&apos;
-    compile &apos;org.springframework.data:spring-data-commons:1.11.0.RELEASE&apos;
-    compile &apos;org.springframework.security:spring-security-core:4.0.2.RELEASE&apos;
-    compile &apos;com.google.guava:guava:18.0&apos;
-    compile &apos;org.apache.commons:commons-lang3:3.4&apos;
-    compile &apos;commons-beanutils:commons-beanutils:1.9.2&apos;
-
-    // the Cache libraries.
-    compile &quot;redis.clients:jedis:2.6.3&quot;
-    compile &quot;org.springframework.data:spring-data-commons:1.10.2.RELEASE&quot;
-    compile &quot;org.springframework.data:spring-data-redis:1.5.2.RELEASE&quot;
-
-    compile &quot;org.apache.commons:commons-pool2:2.4.2&quot;
-    compile &quot;org.springframework.session:spring-session:1.0.2.RELEASE&quot;
-    compile(&quot;org.springframework.session:spring-session-data-redis:1.0.2.RELEASE&quot;) {
-        transitive = false
-    }
-    // test libraries
-    compile &quot;org.uncommons:reportng:1.1.4&quot;
-    compile(&quot;junit:junit:4.12&quot;) {
-        exclude group: &apos;org.hamcrest&apos;
-    }
-    compile &quot;org.testng:testng:6.9.4&quot;
-    compile &quot;org.hamcrest:hamcrest-all:1.3&quot;
-    compile &quot;org.mockito:mockito-core:1.10.19&quot;
-    compile &quot;com.jayway.jsonpath:json-path:2.0.0&quot;
-    compile &quot;com.google.inject:guice:4.0&quot;
-    compile &quot;org.dbunit:dbunit:2.5.1&quot;
-    compile(&quot;com.github.springtestdbunit:spring-test-dbunit:1.2.1&quot;) {
-        transitive = false;
-    }
-    compile &quot;com.jayway.awaitility:awaitility:1.6.3&quot;
-    compile &apos;org.springframework:spring-test:4.2.1.RELEASE&apos;
-
-    //DateTime
-    compile &apos;joda-time:joda-time:2.8.2&apos;
-    //    compile &apos;com.github.springtestdbunit:spring-test-dbunit:1.2.1&apos;
-    //    compile &apos;org.testng:testng:6.9.6&apos;
-
-    compile &apos;com.fasterxml.jackson.core:jackson-annotations:2.6.1&apos;
-    compile &apos;com.fasterxml.jackson.core:jackson-core:2.4.1&apos;
-    compile &apos;com.fasterxml.jackson.core:jackson-databind:2.5.3&apos;
-
-    compile &apos;taglibs:standard:1.1.2&apos;
-    //apache
-    providedCompile &apos;javax.servlet:servlet-api:2.5&apos;
-}
-
-    //应用gertty jar包
-    apply plugin: &apos;org.akhikhl.gretty&apos;
-
-
-
-    `
-    win+R
-    启动项目用 找到项目的硬盘目录下面 用命令行方式 gradle appRun即可
-    调试项目，需要在idea里面配置remote，然后找到项目的硬盘目录下面 用命令的方式 gradle appRunDebug 即可
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/18/html5实现弹出提示框，并且伴随遮罩层并且可以关闭弹出框/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T10:05:01+08:00" content="2016-10-18">
-              2016-10-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/18/html5实现弹出提示框，并且伴随遮罩层并且可以关闭弹出框/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/html5实现弹出提示框，并且伴随遮罩层并且可以关闭弹出框/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>`
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head lang=&quot;en&quot;&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script src=&quot;js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
-    &lt;style&gt;
-        *{padding: 0; margin: 0}
-        .box{
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.2);
-            display: none;
-        }
-        .box1{
-            width: &lt;a href=&quot;https://www.baidu.com/s?wd=500px&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dBPWbsuy7Bn1-WmvmYnWbY0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1Rznjf4n1mvnWn3njDYnjfsPf&quot; target=&quot;_blank&quot; class=&quot;baidu-highlight&quot;&gt;500px&lt;/a&gt;;
-            height: &lt;a href=&quot;https://www.baidu.com/s?wd=500px&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dBPWbsuy7Bn1-WmvmYnWbY0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1Rznjf4n1mvnWn3njDYnjfsPf&quot; target=&quot;_blank&quot; class=&quot;baidu-highlight&quot;&gt;500px&lt;/a&gt;;
-            position: fixed;left: 50%; top: 25%;
-            &lt;a href=&quot;https://www.baidu.com/s?wd=margin-left&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dBPWbsuy7Bn1-WmvmYnWbY0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1Rznjf4n1mvnWn3njDYnjfsPf&quot; target=&quot;_blank&quot; class=&quot;baidu-highlight&quot;&gt;margin-left&lt;/a&gt;: -250px;
-            border: 1px solid #000000;
-        }
-    &lt;/style&gt;
-    &lt;script&gt;
-
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;box&quot;&gt;
-        &lt;div class=&quot;box1&quot;&gt;
-            &lt;a href=&quot;javascript:;&quot; onclick=&quot;jQuery(&apos;.box&apos;).hide()&quot; class=&quot;close&quot;&gt;关闭&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;a href=&quot;javascript:;&quot; onclick=&quot;jQuery(&apos;.box&apos;).show()&quot; class=&quot;show&quot;&gt;显示&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-`
-完全可以去掉href，这里只是个示例，完全可以用button代替，看自己的习惯，我这里用的是a标签
-如何没有居中的话 可以吧fixed换成auto尝试一下
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/16/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T16:32:43+08:00" content="2016-10-16">
-              2016-10-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库-JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库 JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/16/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/16/Test/" itemprop="url">
-                  Hello World
-                </a>
+                Hello World
               
             
           </h1>
@@ -921,9 +383,7 @@
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -933,36 +393,82 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Injury/" rel="tag">#Injury</a>
+          
+            <a href="/tags/Fight/" rel="tag">#Fight</a>
+          
+            <a href="/tags/Shocking/" rel="tag">#Shocking</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/16/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/16/Test/"
+     data-title="Hello World"
+     data-content=""
+     data-url="http://yoursite.com/2016/10/16/Test/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -970,6 +476,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/16/Test/"
+           data-title="Hello World" data-url="http://yoursite.com/2016/10/16/Test/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -989,8 +503,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1069,6 +592,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1165,6 +699,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
